@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', base),
     path('scrapp', scrapp)
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 
+
