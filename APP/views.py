@@ -9,8 +9,8 @@ def base(request):
 
 # AJAX/API SCRAPPER
 def scrapp(request):
-    option = request.POST.get('o') 
-    url = request.POST.get('u')
+    option = request.GET.get('o') 
+    url = request.GET.get('u')
     
     # condition if there is an empty input 
     if option != 'o' and url != '':
