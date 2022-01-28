@@ -66,8 +66,17 @@ def scrapper_action(u, o):
     if o == 'amazon':
         try:
             url = u
-            HEADERS = ({'User-Agent':
-                        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36', 'Accept-Language': 'en-US, en;q=0.5'})
+            HEADERS = ({'authority': 'www.amazon.com',
+                        'pragma': 'no-cache',
+                        'cache-control': 'no-cache',
+                        'dnt': '1',
+                        'upgrade-insecure-requests': '1',
+                        'user-agent': 'Mozilla/5.0 (X11; CrOS x86_64 8172.45.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.64 Safari/537.36',
+                        'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+                        'sec-fetch-site': 'none',
+                        'sec-fetch-mode': 'navigate',
+                        'sec-fetch-dest': 'document',
+                        'accept-language': 'en-GB,en-US;q=0.9,en;q=0.8',})
 
             pag = requests.get(url, headers = HEADERS)
 
@@ -84,7 +93,10 @@ def scrapper_action(u, o):
             list_img = []
             for i in job_elem[0].find_all('img'):
                 i = i['src']
-                i = i[:-12]+ 'UX500' + i[-5:]
+                if i.find('_AC_') != -1:
+                    c = i.split('_AC_')
+                    i = str(c[0]) + '_AC_UX500_' + str(c[1].split('_')[-1:][0])
+                    
                 list_img.append(i)
                 
             # result image
