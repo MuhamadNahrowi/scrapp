@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from APP.views import *
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', base),
     path('scrapp', scrapp)
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
