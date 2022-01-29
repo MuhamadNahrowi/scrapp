@@ -114,7 +114,7 @@ def scrapper_action(u, o):
         price_all = sou.find_all('span', class_='apexPriceToPay') # find price element in HTML
         print(price_all)
         print(sou.find_all('span', id='price_inside_buybox'))
-        price_result = price_all[0].find_all('span')[0].text.strip() # break price to result
+        price_result = '$0'
     
         # result
         source = 'amazon.com'
