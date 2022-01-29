@@ -118,7 +118,7 @@ def scrapper_action(u, o):
     
         # result
         source = 'amazon.com'
-        title = title
+        title = sou
         image = img
         price = price_result.split('$')[1]
         code = 0
