@@ -111,12 +111,9 @@ def scrapper_action(u, o):
                 img = ["Error Image"]
 
             # get price
-            try:
-                price_all = sou.find_all('span', class_='apexPriceToPay') # find price element in HTML
-                price_result = price_all[0].find_all('span')[0].text.strip() # break price to result
-            
-            except:
-                price_result = '$0'
+            price_all = sou.find_all('span', class_='apexPriceToPay') # find price element in HTML
+            price_result = price_all[0].find_all('span')[0].text.strip() # break price to result
+        
             # result
             source = 'amazon.com'
             title = title
